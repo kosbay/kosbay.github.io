@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Orynbasar Kosbay - Senior Full-Stack &amp; AI Engineer</title>
+<meta name="description" content="Senior Full-Stack Engineer and founder with 10 years of experience. AI agents, RAG, MCP, React, TypeScript, Node.js. Founder of VibeCheck.">
+<meta property="og:title" content="Orynbasar Kosbay - Senior Full-Stack &amp; AI Engineer">
+<meta property="og:description" content="10 years taking web products from concept to launch. AI agents, MCP, React, TypeScript, Node.js. Founder of VibeCheck.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #ffffff;
+    --text: #0f0f0f;
+    --body: #333333;
+    --muted: #767676;
+    --line: #e6e6e6;
+    --hover: #fafafa;
+    --sans: "Geist", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    --mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    --rail: 150px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0b0b0b;
+      --text: #f2f2f2;
+      --body: #c4c4c4;
+      --muted: #8a8a8a;
+      --line: #242424;
+      --hover: #121212;
+    }
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; scroll-padding-top: 64px; }
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--body);
+    font-size: 15px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  ::selection { background: var(--text); color: var(--bg); }
+  :focus-visible { outline: 2px solid var(--text); outline-offset: 3px; border-radius: 3px; }
+  .wrap { max-width: 820px; margin: 0 auto; padding: 0 24px; }
+
+  a {
+    color: var(--text);
+    text-decoration: underline;
+    text-decoration-color: var(--line);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 4px;
+    transition: text-decoration-color 0.15s, color 0.15s, border-color 0.15s, background 0.15s;
+  }
+  a:hover { text-decoration-color: var(--text); }
+  strong { font-weight: 600; color: var(--text); }
+  p { text-wrap: pretty; }
+
+  /* Nav */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: color-mix(in srgb, var(--bg) 85%, transparent);
+    backdrop-filter: saturate(180%) blur(12px);
+    -webkit-backdrop-filter: saturate(180%) blur(12px);
+    border-bottom: 1px solid var(--line);
+  }
+  nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 52px; }
+  nav a { text-decoration: none; }
+  .brand { font-weight: 600; letter-spacing: -0.2px; }
+  .nav-links { display: flex; gap: 22px; font-size: 13.5px; }
+  .nav-links a { color: var(--muted); }
+  .nav-links a:hover { color: var(--text); }
+
+  /* Hero */
+  header.hero { padding: 88px 0 0; }
+  .eyebrow { font-family: var(--mono); font-size: 12px; color: var(--muted); letter-spacing: 0.1px; }
+  h1 {
+    color: var(--text);
+    font-size: 44px;
+    line-height: 1.08;
+    letter-spacing: -1.8px;
+    font-weight: 600;
+    margin-top: 16px;
+    max-width: 640px;
+    text-wrap: balance;
+  }
+  .lead { font-size: 17px; line-height: 1.6; color: var(--muted); margin-top: 20px; max-width: 620px; }
+  .actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 28px; }
+  .btn {
+    display: inline-block;
+    padding: 7px 14px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    color: var(--text);
+    font-size: 13.5px;
+    font-weight: 500;
+    text-decoration: none;
+  }
+  .btn:hover { border-color: var(--text); }
+  .btn.primary { background: var(--text); border-color: var(--text); color: var(--bg); }
+  .btn.primary:hover { opacity: 0.8; }
+
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 64px; }
+  .stat { border-top: 1px solid var(--text); padding-top: 12px; }
+  .stat b {
+    display: block;
+    color: var(--text);
+    font-size: 24px;
+    line-height: 1.15;
+    letter-spacing: -0.8px;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+  }
+  .stat span { display: block; font-size: 12.5px; line-height: 1.45; color: var(--muted); margin-top: 6px; }
+
+  /* Sections */
+  section { padding-top: 88px; }
+  h2 {
+    font-family: var(--mono);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: var(--text);
+    padding-bottom: 12px;
+    margin-bottom: 28px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  ul { list-style: none; margin-top: 10px; }
+  li { position: relative; padding-left: 18px; margin-bottom: 6px; }
+  li::before { content: "\2013"; position: absolute; left: 0; color: var(--muted); }
+
+  /* Tech lists: plain mono text separated by dots */
+  .tags { display: flex; flex-wrap: wrap; gap: 2px 14px; margin-top: 14px; font-family: var(--mono); font-size: 11.5px; line-height: 1.7; color: var(--muted); }
+  .tags span { white-space: nowrap; }
+
+  .badge {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 10.5px;
+    line-height: 1.5;
+    padding: 1px 7px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    color: var(--muted);
+    white-space: nowrap;
+  }
+
+  /* Rows: left rail + content (projects and experience) */
+  .job {
+    display: grid;
+    grid-template-columns: var(--rail) 1fr;
+    gap: 20px;
+    padding: 28px 0;
+    border-top: 1px solid var(--line);
+  }
+  .job:first-of-type { border-top: none; padding-top: 0; }
+  .when { font-family: var(--mono); font-size: 12px; color: var(--muted); padding-top: 4px; white-space: nowrap; }
+  .when .badge { display: table; margin-top: 8px; }
+  h3 { color: var(--text); font-size: 17px; font-weight: 600; letter-spacing: -0.3px; line-height: 1.35; }
+  h3 a { text-decoration: none; }
+  h3 a::after { content: "\2197"; font-weight: 400; color: var(--muted); margin-left: 5px; font-size: 0.85em; transition: color 0.15s; }
+  h3 a:hover::after { color: var(--text); }
+  .sub { color: var(--muted); font-size: 13.5px; margin-top: 2px; }
+  .job p { margin-top: 12px; }
+  .feature h3 { font-size: 20px; letter-spacing: -0.5px; }
+  .card-links { display: flex; flex-wrap: wrap; gap: 4px 18px; margin-top: 14px; font-size: 13.5px; }
+
+  .metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin: 20px 0 18px; }
+  .metric { border-left: 1px solid var(--line); padding-left: 12px; }
+  .metric b {
+    display: block;
+    color: var(--text);
+    font-size: 19px;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+  }
+  .metric span { display: block; font-size: 12px; line-height: 1.4; color: var(--muted); margin-top: 4px; }
+
+  /* Small project cards */
+  .more { font-family: var(--mono); font-size: 12px; color: var(--muted); padding: 24px 0 14px; border-top: 1px solid var(--line); }
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .card {
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    transition: border-color 0.15s, background 0.15s;
+  }
+  .card:hover { border-color: var(--muted); background: var(--hover); }
+  .card h3 { font-size: 14.5px; letter-spacing: -0.2px; }
+  .card .sub { font-size: 12px; }
+  .card p { font-size: 13px; line-height: 1.55; margin-top: 10px; flex: 1; }
+  .card .tags { font-size: 11px; margin-top: 12px; gap: 1px 10px; }
+
+  /* Skills */
+  .skills { display: grid; grid-template-columns: var(--rail) 1fr; gap: 16px 20px; }
+  .skills dt { font-family: var(--mono); font-size: 12px; color: var(--muted); padding-top: 4px; }
+  .skills .tags { margin-top: 0; display: flex; flex-wrap: wrap; gap: 6px; font-family: var(--sans); }
+  .skills .tags span { font-size: 12.5px; line-height: 1.5; padding: 2px 9px; border: 1px solid var(--line); border-radius: 999px; color: var(--body); }
+
+  /* Education */
+  .edu { display: grid; grid-template-columns: var(--rail) 1fr; gap: 20px; padding: 14px 0; }
+  .edu + .edu { border-top: 1px solid var(--line); }
+  .edu:first-of-type { padding-top: 0; }
+  .edu .when { order: -1; }
+
+  /* Contact */
+  .contact { padding: 8px 0 0; }
+  .contact p { color: var(--muted); }
+  .contact .big {
+    display: inline-block;
+    color: var(--text);
+    font-size: 30px;
+    font-weight: 600;
+    letter-spacing: -1px;
+    line-height: 1.2;
+    margin-top: 8px;
+    overflow-wrap: anywhere;
+  }
+  .contact .actions { margin-top: 22px; }
+
+  footer {
+    margin-top: 88px;
+    padding: 20px 0 40px;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-family: var(--mono);
+    font-size: 11.5px;
+  }
+
+  @media (max-width: 720px) {
+    header.hero { padding-top: 48px; }
+    h1 { font-size: 32px; letter-spacing: -1.1px; }
+    .lead { font-size: 16px; }
+    .nav-links { gap: 14px; font-size: 13px; }
+    .nav-links .hide-sm { display: none; }
+    .stats { grid-template-columns: 1fr 1fr; gap: 20px 16px; margin-top: 44px; }
+    .metrics { grid-template-columns: 1fr 1fr; gap: 14px 12px; }
+    .grid { grid-template-columns: 1fr; }
+    .job, .edu { grid-template-columns: 1fr; gap: 6px; }
+    .job { padding: 24px 0; }
+    .when { padding-top: 0; }
+    .when .badge { display: inline-block; margin: 0 0 0 8px; }
+    .skills { grid-template-columns: 1fr; gap: 6px; }
+    .skills dd { margin-bottom: 12px; }
+    .contact .big { font-size: 22px; letter-spacing: -0.6px; }
+    section { padding-top: 60px; }
+    footer { margin-top: 60px; }
+  }
+  @media (min-width: 721px) and (max-width: 860px) {
+    .grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media print {
+    nav, .actions { display: none; }
+    body { font-size: 12px; }
+    .card, .job { break-inside: avoid; }
+    section { padding-top: 28px; }
+    header.hero { padding-top: 0; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#top">Orynbasar Kosbay</a>
+    <div class="nav-links">
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a class="hide-sm" href="#education">Education</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap" id="top">
+
+  <header class="hero">
+    <div class="eyebrow">Senior Full-Stack &amp; AI Engineer &middot; Almaty, Kazakhstan &middot; Remote</div>
+    <h1>I take web and AI products from concept to launch.</h1>
+    <p class="lead"><strong>10 years</strong> building web products as an engineer, team lead and founder. I specialize in AI-powered products &mdash; LLM agents, RAG pipelines, MCP servers and conversational assistants &mdash; and I'm equally effective owning delivery solo or leading a cross-functional team to ship on time.</p>
+    <div class="actions">
+      <a class="btn primary" href="mailto:kosbay12@gmail.com">Email me</a>
+      <a class="btn" href="cv-Kosbay-Orynbasar.pdf" target="_blank" rel="noopener">Download CV</a>
+      <a class="btn" href="https://github.com/kosbay" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn" href="https://linkedin.com/in/orynbasar-kosbay" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><b>10 yrs</b><span>shipping production web products</span></div>
+      <div class="stat"><b>1M+</b><span>daily users on e-commerce I shipped features for</span></div>
+      <div class="stat"><b>10,000+</b><span>B2B stores on a platform whose front-end team I led</span></div>
+      <div class="stat"><b>1,000+</b><span>nodes in a single workflow on a builder I lead</span></div>
+    </div>
+  </header>
+
+  <section id="experience">
+    <h2>Experience</h2>
+
+    <div class="job">
+      <div class="when">May 2024 &ndash; Present</div>
+      <div>
+        <h3>Senior Software Engineer</h3>
+        <div class="sub">Presight &middot; Remote</div>
+        <ul>
+          <li>Lead engineering on a visual workflow-automation platform (n8n-style) built from scratch: a React Flow canvas with 11 node types that scales to <strong>1,000+ nodes</strong> in a single workflow; clients run hundreds of workflow reports daily.</li>
+          <li>Built the execution engine on NestJS and PostgreSQL: dependency-ordered runs with up to <strong>100 node executions in parallel</strong>, cron scheduling from natural language, snapshot versioning and live status over WebSockets, with connectors for 5 database engines.</li>
+          <li>Exposed the platform to AI assistants through an <strong>MCP server with 11 tools</strong>, and added AI-assisted authoring that generates nodes, agent prompts and transform code.</li>
+          <li>Build AI conversational assistants using LLMs with RAG, tool use, token streaming and voice input, owning system design across React, Vue and Node.js / Python services.</li>
+          <li>Contributed to an enterprise product covered by <strong>1,100+ automated tests</strong> plus Playwright end-to-end suites, shipped through per-pull-request preview environments on Kubernetes, with full English / Arabic (RTL) support.</li>
+        </ul>
+        <div class="tags"><span>React</span><span>Vue 3</span><span>TypeScript</span><span>NestJS</span><span>FastAPI</span><span>PostgreSQL</span><span>RabbitMQ</span><span>LLMs</span><span>RAG</span><span>MCP</span><span>Keycloak</span><span>Docker</span><span>Helm</span><span>Azure Kubernetes</span></div>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="when">Nov 2022 &ndash; May 2024</div>
+      <div>
+        <h3>Lead Frontend Developer</h3>
+        <div class="sub">Appboxo &middot; Remote</div>
+        <ul>
+          <li>Led a team of <strong>5 developers</strong> on an e-commerce platform serving <strong>10,000+ B2B stores</strong>, running both as web shops and as mini-apps inside super-apps.</li>
+          <li>Cut front-end bundle size by <strong>40%</strong>, improving load time and user experience.</li>
+          <li>Owned a multi-tenant Next.js storefront (60+ pages, 4 languages) and a merchant dashboard, both covered by Playwright end-to-end and visual-regression tests.</li>
+          <li>Worked on the public <a href="https://www.npmjs.com/package/@appboxo/js-sdk" target="_blank" rel="noopener">@appboxo/js-sdk</a> bridge between web mini-apps and native host apps, and on a React Native super-app for an enterprise client.</li>
+          <li>Drove architecture and system-design decisions, mentored developers, and led code reviews.</li>
+        </ul>
+        <div class="tags"><span>React</span><span>Next.js</span><span>TypeScript</span><span>Redux</span><span>React Query</span><span>React Native</span><span>Turborepo</span><span>Nx</span><span>Storybook</span><span>Playwright</span><span>Stripe</span><span>Sentry</span></div>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="when">Sep 2021 &ndash; 2022</div>
+      <div>
+        <h3>Senior Full-Stack Developer</h3>
+        <div class="sub">Toptal &middot; Remote</div>
+        <ul>
+          <li>Built and shipped features for Belk, a major U.S. e-commerce retailer serving <strong>1M+ daily active users</strong>, on a Salesforce Commerce Cloud storefront.</li>
+          <li>Designed the front-end architecture for a hotel and trip-booking product in business aviation, built on React, GraphQL and virtualized data grids.</li>
+          <li>Delivered new functionality and resolved UI/UX issues across the stack.</li>
+        </ul>
+        <div class="tags"><span>TypeScript</span><span>React</span><span>GraphQL</span><span>Apollo</span><span>Node.js</span><span>Salesforce Commerce Cloud</span><span>HTML/CSS</span></div>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="when">Sep 2020 &ndash; Sep 2021</div>
+      <div>
+        <h3>Lead Frontend Developer</h3>
+        <div class="sub">Chocofamily Holding &middot; Almaty</div>
+        <ul>
+          <li>Led the front-end team in building the <a href="https://ioka.kz" target="_blank" rel="noopener">ioka</a> payment gateway from scratch, delivered on schedule.</li>
+          <li>Optimized build time and the deployment pipeline, increasing payment conversion by <strong>20%</strong>.</li>
+          <li>Architected a new React payment form for a new feature that improved customer adoption by <strong>30%</strong>.</li>
+          <li>Built the hosted card form and embeddable widget (cross-domain iframes) with 3-D Secure, Apple Pay, saved cards and client-side AES / RSA card encryption.</li>
+          <li>Also delivered the merchant cabinet and landing page, in a 24-package monorepo deployed through GitLab CI to AWS Kubernetes.</li>
+        </ul>
+        <div class="tags"><span>TypeScript</span><span>React</span><span>Next.js</span><span>RxJS</span><span>Node.js</span><span>Lerna</span><span>Jest</span><span>GitLab CI</span><span>AWS EKS</span><span>Figma</span></div>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="when">Aug &ndash; Sep 2020</div>
+      <div>
+        <h3>Frontend Developer (Freelance)</h3>
+        <div class="sub">Hipnode &middot; Remote</div>
+        <ul>
+          <li>Rebuilt the International Drivers Association website for search performance with Next.js and AMP, reaching <strong>top 1&ndash;3 Google positions</strong> in 20&ndash;25 countries and 15 languages.</li>
+          <li>The SEO-driven rebuild contributed to <strong>2&times; business growth</strong> in 3 months.</li>
+        </ul>
+        <div class="tags"><span>React</span><span>Next.js</span><span>AMP</span><span>Technical SEO</span><span>i18n</span><span>HTML/CSS</span></div>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="when">Aug 2019 &ndash; Aug 2020</div>
+      <div>
+        <h3>Full-Stack Developer</h3>
+        <div class="sub">Second Company IT &middot; Haarlem, Netherlands</div>
+        <ul>
+          <li>Built and maintained web applications for the roofing, social and job-marketing industries, including PWA and server-side-rendered apps.</li>
+          <li>Consulted with clients directly on proposals, specifications and technical issues during development.</li>
+        </ul>
+        <div class="tags"><span>React</span><span>Redux</span><span>Node.js</span><span>Express.js</span><span>TypeScript</span><span>SQL</span><span>MongoDB</span><span>PWA</span><span>SSR</span></div>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="when">Oct 2018 &ndash; Sep 2019</div>
+      <div>
+        <h3>Full-Stack Developer</h3>
+        <div class="sub">Intellection Studio &middot; Almaty</div>
+        <ul>
+          <li>Developed client and server features for an educational platform, and built a Firebase notification system for the internal portal.</li>
+          <li>Improved build time and API response time by adding clustering on the server side.</li>
+        </ul>
+        <div class="tags"><span>React</span><span>Node.js</span><span>Firebase</span><span>JavaScript</span></div>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="when">2016 &ndash; 2019</div>
+      <div>
+        <h3>Frontend Developer</h3>
+        <div class="sub">TopClass &middot; Almaty</div>
+        <ul>
+          <li>Built cross-browser, mobile-first UIs and full-stack CMS solutions.</li>
+          <li>In the same period: full-stack development at BigSolutions (PHP, Yii2) and teaching a MERN-stack course at KnewIT.</li>
+        </ul>
+        <div class="tags"><span>JavaScript</span><span>React</span><span>TypeScript</span><span>AngularJS</span><span>AEM (Adobe)</span><span>MERN</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+
+    <!-- VibeCheck -->
+    <div class="job feature">
+      <div class="when">2026<span class="badge">Live</span></div>
+      <div>
+      <h3><a href="https://vibecheck-qa.com" target="_blank" rel="noopener">VibeCheck</a></h3>
+      <div class="sub">Founder &amp; Lead Engineer &middot; AI-powered bug capture and fixing platform for QA and product teams</div>
+      <p>Records the full context of a bug &mdash; video, console, network, user actions and session replay &mdash; and lets non-developers fix simple issues straight from the report. I designed and built the whole product suite: browser extension, web platform, AI code agent, monitoring SDK, MCP server and an iOS companion app.</p>
+
+      <div class="metrics">
+        <div class="metric"><b>300+</b><span>Chrome Web Store installs, 10 B2B clients</span></div>
+        <div class="metric"><b>+140%</b><span>installs in 30 days (users +75%)</span></div>
+        <div class="metric"><b>&minus;82%</b><span>extension size, 10 MB &rarr; 1.8 MB</span></div>
+        <div class="metric"><b>5&times;</b><span>shorter agent recordings after idle trimming</span></div>
+      </div>
+
+      <ul>
+        <li><strong>AI Fix agent</strong> &mdash; a Claude tool-use loop (4 tools, capped at 15 iterations, streamed over SSE) that reads the connected GitHub repo together with the bug's console errors, failed requests and user actions, then opens a pull request. 7 of the first 10 runs ended in an opened PR.</li>
+        <li><strong>Chrome extension (Manifest V3)</strong>, started from OpenReplay's open-source Spot &mdash; screen and audio recording, annotated screenshots, network capture and an action replay engine with a 7-strategy selector fallback. Removing FFmpeg WASM cut the build by 82% and I raised the recording limit 2.5&times; (24 MB &rarr; 60 MB).</li>
+        <li><strong>Error-monitoring SDK</strong> (npm) &mdash; passive error capture with a 30-second rrweb replay buffer, SHA-256 error fingerprinting, retry with backoff, and gzip transport that cuts payloads by 60&ndash;80%.</li>
+        <li><strong>MCP server</strong> (npm, open source) &mdash; 16 tools that let AI assistants read bug reports and record their own browser sessions through Playwright; idle trimming turns a 5-minute session into under a minute.</li>
+        <li><strong>Platform</strong> &mdash; Next.js app with 66 API routes, GitHub / Jira / Linear integrations, AES-256-GCM encrypted OAuth tokens, hashed API keys, server-side plan limits and 3 languages (EN / RU / KK).</li>
+        <li><strong>iOS companion app</strong> (in development) &mdash; SwiftUI + ReplayKit broadcast extension that encodes video incrementally to stay inside the 50 MB extension memory cap.</li>
+      </ul>
+
+      <div class="tags">
+        <span>TypeScript</span><span>React</span><span>Next.js</span><span>Node.js</span><span>Firebase</span><span>Claude API</span><span>AI agents</span><span>MCP</span><span>Chrome MV3</span><span>WXT</span><span>rrweb</span><span>Playwright</span><span>Swift</span><span>Vercel</span>
+      </div>
+      <div class="card-links">
+        <a href="https://vibecheck-qa.com" target="_blank" rel="noopener">Website &rarr;</a>
+        <a href="https://chromewebstore.google.com/detail/vibecheck-track-record-re/diallehkfhadjojdkenhlkknonagplde" target="_blank" rel="noopener">Chrome Web Store &rarr;</a>
+        <a href="https://github.com/kosbay/vibecheck-mcp" target="_blank" rel="noopener">MCP server on GitHub &rarr;</a>
+        <a href="https://www.npmjs.com/package/@vibecheck-watch/sdk" target="_blank" rel="noopener">SDK on npm &rarr;</a>
+      </div>
+      </div>
+    </div>
+
+    <!-- shipfast.design -->
+    <div class="job feature">
+      <div class="when">2026<span class="badge">In progress</span></div>
+      <div>
+      <h3>shipfast.design</h3>
+      <div class="sub">Paste a URL, get the site's design system back as clean HTML + CSS</div>
+      <p>A six-stage pipeline that extracts design tokens and components from any website with Playwright, regenerates them as framework-free code with an LLM, then verifies the output numerically against the original.</p>
+
+      <div class="metrics">
+        <div class="metric"><b>~140&times;</b><span>cheaper per site: $7&ndash;8 agent run &rarr; ~$0.05</span></div>
+        <div class="metric"><b>98&ndash;100%</b><span>computed-style match on 9 of 10 reference sites</span></div>
+        <div class="metric"><b>2&times;</b><span>faster and ~50% cheaper with model thinking off</span></div>
+        <div class="metric"><b>36&ndash;121 s</b><span>end-to-end per site</span></div>
+      </div>
+
+      <ul>
+        <li>Replaced a free-running agent with deterministic token extraction plus small, parallel, text-only LLM calls (150&ndash;800 tokens per component) under a hard per-job budget cap.</li>
+        <li>A verifier renders each generated component offline and diffs computed styles; anything under 85% gets one repair call, then a deterministic fallback.</li>
+        <li>Hardened for untrusted input: SSRF guard, isolated Chromium per job, output sanitizer, sandboxed previews and page text replaced with placeholders to block prompt injection.</li>
+      </ul>
+      <div class="tags">
+        <span>Node.js</span><span>Playwright</span><span>Next.js</span><span>LLM function calling</span><span>SSE</span><span>pnpm workspaces</span>
+      </div>
+      </div>
+    </div>
+
+    <div class="more">Open source &amp; automation</div>
+    <div class="grid">
+      <div class="card">
+        <h3><a href="https://github.com/kosbay/linkedin-copilot" target="_blank" rel="noopener">LinkedIn Copilot</a></h3>
+        <div class="sub">Open-source Chrome extension</div>
+        <p>A Grammarly-style writing widget for LinkedIn that drafts comments, DMs and posts with streaming output. Supports 4 LLM providers and 9 models through hand-written streaming adapters (no provider SDKs), isolated in Shadow DOM, with an edge-function proxy for the free tier.</p>
+        <div class="tags"><span>Chrome MV3</span><span>React</span><span>TypeScript</span><span>OpenAI</span><span>Claude</span><span>Groq</span><span>Vercel Edge</span></div>
+      </div>
+
+      <div class="card">
+        <h3><a href="https://t.me/qa_community_kz" target="_blank" rel="noopener">QA Jobs Pipeline</a></h3>
+        <div class="sub">Automation for a Telegram community</div>
+        <p>Collects QA vacancies from 9 Telegram channels and HH.kz every 20 minutes, classifies them with Claude Haiku at about $0.001 per vacancy, and publishes after a one-tap human approval. Runs entirely on GitHub Actions with no database.</p>
+        <div class="tags"><span>Python</span><span>Claude API</span><span>Prompt caching</span><span>Telegram API</span><span>GitHub Actions</span></div>
+      </div>
+
+      <div class="card">
+        <h3><a href="https://github.com/kosbay/ClipCue" target="_blank" rel="noopener">ClipCue</a></h3>
+        <div class="sub">Open-source macOS menu-bar app</div>
+        <p>Flashes a small cue at the cursor on copy, cut and paste so you know the shortcut registered. Under 500 lines of Swift with zero dependencies, no clipboard history and no network access.</p>
+        <div class="tags"><span>Swift</span><span>AppKit</span><span>macOS</span></div>
+      </div>
+
+
+
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <dl class="skills">
+      <dt>AI &amp; LLM</dt>
+      <dd class="tags"><span>LLM integration</span><span>AI agents</span><span>Tool use / function calling</span><span>RAG</span><span>MCP servers</span><span>Prompt engineering</span><span>Prompt caching</span><span>Streaming (SSE)</span><span>Vector search</span><span>Claude API</span><span>OpenAI API</span><span>Gemini</span><span>LangChain</span><span>LLM cost optimization</span></dd>
+
+      <dt>Languages</dt>
+      <dd class="tags"><span>TypeScript</span><span>JavaScript (ES2023)</span><span>Python</span><span>SQL</span><span>HTML5</span><span>CSS3 / Sass</span><span>Swift</span></dd>
+
+      <dt>Front end</dt>
+      <dd class="tags"><span>React</span><span>Next.js</span><span>Vue 3</span><span>React Native</span><span>Redux Toolkit</span><span>TanStack Query</span><span>Zustand</span><span>React Flow</span><span>Tailwind CSS</span><span>MUI</span><span>Ant Design</span><span>shadcn/ui</span><span>Storybook</span><span>Vite</span><span>Webpack</span><span>i18n / RTL</span><span>Web performance</span><span>Technical SEO</span><span>PWA / SSR</span><span>Accessibility</span></dd>
+
+      <dt>Back end</dt>
+      <dd class="tags"><span>Node.js</span><span>NestJS</span><span>Express.js</span><span>FastAPI</span><span>REST API design</span><span>GraphQL</span><span>WebSockets</span><span>OAuth 2.0 / OIDC</span><span>Keycloak</span><span>RabbitMQ</span><span>Background jobs &amp; queues</span><span>Serverless</span><span>System design</span></dd>
+
+      <dt>Data</dt>
+      <dd class="tags"><span>PostgreSQL</span><span>MongoDB</span><span>Firebase / Firestore</span><span>Supabase</span><span>Redis</span><span>TypeORM</span><span>Prisma</span><span>S3-compatible storage</span></dd>
+
+      <dt>Testing</dt>
+      <dd class="tags"><span>Jest</span><span>Vitest</span><span>Playwright</span><span>Cypress</span><span>React Testing Library</span><span>Unit / integration / e2e</span><span>Visual regression</span></dd>
+
+      <dt>DevOps &amp; Cloud</dt>
+      <dd class="tags"><span>Docker</span><span>Kubernetes</span><span>Helm</span><span>CI/CD</span><span>GitHub Actions</span><span>GitLab CI</span><span>AWS</span><span>Azure</span><span>GCP</span><span>Vercel</span><span>Sentry</span><span>Monorepos (Turborepo, Nx, pnpm)</span></dd>
+
+      <dt>Platforms</dt>
+      <dd class="tags"><span>Chrome Extensions (MV3)</span><span>JavaScript SDKs</span><span>npm packages</span><span>Payments (Stripe, 3-D Secure)</span><span>Session replay (rrweb)</span><span>iOS (SwiftUI)</span></dd>
+
+      <dt>Leadership</dt>
+      <dd class="tags"><span>Team leadership</span><span>Mentoring</span><span>Code review</span><span>Architecture decisions</span><span>Product ownership</span><span>Agile / Scrum</span><span>Remote, async teams</span></dd>
+
+      <dt>Languages spoken</dt>
+      <dd class="tags"><span>Kazakh (native)</span><span>Russian (native)</span><span>English (professional)</span></dd>
+    </dl>
+  </section>
+
+  <section id="education">
+    <h2>Education</h2>
+    <div class="edu">
+      <div>
+        <strong>Master's Degree, Computer Science and Software Engineering</strong>
+        <div class="sub">International Information Technologies University &middot; Almaty</div>
+      </div>
+      <div class="when">2018 &ndash; 2021</div>
+    </div>
+    <div class="edu">
+      <div>
+        <strong>Bachelor's Degree, Computer Science and Software Engineering</strong>
+        <div class="sub">International Information Technologies University &middot; Almaty</div>
+      </div>
+      <div class="when">2014 &ndash; 2018</div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <div class="contact">
+      <p>Open to senior, lead and founding-engineer roles, remote or in Almaty.</p>
+      <a class="big" href="mailto:kosbay12@gmail.com">kosbay12@gmail.com</a>
+      <div class="actions">
+        <a class="btn" href="https://linkedin.com/in/orynbasar-kosbay" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn" href="https://github.com/kosbay" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn" href="cv-Kosbay-Orynbasar.pdf" target="_blank" rel="noopener">Download CV</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>&copy; 2026 Orynbasar Kosbay</footer>
+
+</div>
+
+</body>
+</html>
